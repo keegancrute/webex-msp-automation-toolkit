@@ -85,7 +85,7 @@ Use this tool for one-off migrations or targeted PSTN updates.
 
 ## Requirements
 
-- Python 3.8+  
+- Python 3.x+  
 
 **Python libraries required**
 
