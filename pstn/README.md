@@ -105,7 +105,7 @@ Set your Webex access token as an environment variable:
 
     export WEBEX_ACCESS_TOKEN="your_access_token_here"
 
-Tokens must include appropriate **Partner API** scopes.
+Tokens must include appropriate **Webex API** scopes.
 
 ---
 
