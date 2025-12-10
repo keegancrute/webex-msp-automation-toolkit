@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 """
 Fetch Webex Licenses (Hardcoded Org IDs)
----------------------------------------
-- Activates each org by calling GET /v1/organizations/{orgId}
-- Pulls `displayName` from activation call (so names are always up to date)
-- Fetches licenses for that org via GET /v1/licenses?orgId=...
-- Writes detailed success/failed JSON logs
-- Exports a flat CSV of all licenses across orgs
 
-Fill in:
-  1) WEBEX_ACCESS_TOKEN environment variable
-  2) ORGS list (org_id only)
+This script activates organizations in the Webex Partner API and retrieves all
+licenses for each org via the /v1/licenses endpoint. It handles paging, error
+responses, and rate limiting, and produces:
 
-Requires: requests, pandas, ratelimit
-  pip install requests pandas ratelimit
+    - successful_orgs_<timestamp>.json
+    - failed_orgs_<timestamp>.json
+    - webex_licenses_<timestamp>.csv
+
+Organizations must be added manually to the ORGS list.
+A Webex OAuth token must be provided via the WEBEX_ACCESS_TOKEN environment
+variable.
+
+Usage:
+    export WEBEX_ACCESS_TOKEN="your_access_token_here"
+    python3 webex_license_counter.py
 """
+
 
 import json
 import sys
