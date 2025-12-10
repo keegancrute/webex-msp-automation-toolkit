@@ -95,5 +95,3 @@ Inside the script, set:
 - No secrets or tokens are stored in these scripts.
 - `WEBEX_ACCESS_TOKEN` must be exported as an environment variable.
 - Organization ID lists must be populated manually and should not be committed.
-
----
