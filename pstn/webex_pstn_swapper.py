@@ -1,3 +1,31 @@
+#!/usr/bin/env python3
+
+"""
+Webex PSTN Swapper (Single-Organization Version)
+
+This script updates PSTN assignments for all locations in a single Webex
+customer organization. It is typically used for targeted migrations, testing,
+or validation of PSTN change workflows.
+
+Functionality:
+    - Activates the organization via /organizations/{orgId}
+    - Retrieves all location IDs
+    - Queries connectionOptions to identify valid PSTN provider IDs
+    - Applies a selected PSTN provider to all locations
+    - Produces a detailed per-location status report
+
+Outputs:
+    - pstn_swapper_<timestamp>.json
+
+Use this version for testing before running bulk changes with the Flipper tool.
+
+Requires WEBEX_ACCESS_TOKEN to be set in the environment.
+
+Usage:
+    export WEBEX_ACCESS_TOKEN="your_token_here"
+    python3 webex_pstn_swapper.py
+"""
+
 import os
 import sys
 import json
