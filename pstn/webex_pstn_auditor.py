@@ -1,3 +1,33 @@
+#!/usr/bin/env python3
+
+"""
+Webex PSTN Configuration Auditor
+
+This script audits PSTN assignments across multiple Webex customer
+organizations. For each org, it:
+
+    - Activates the organization in Partner scope
+    - Retrieves all locations
+    - Queries /telephony/config/locations/{locationId}/pstnConnection
+    - Builds a structured JSON report summarizing:
+        * Current PSTN provider per location
+        * Missing or invalid PSTN configurations
+        * Orgs with zero locations or unreadable data
+
+Outputs include:
+    - pstn_audit_<timestamp>.json
+    - pstn_audit_flat_<timestamp>.csv
+
+This tool is used to verify readiness before mass PSTN migrations, enforce
+provider consistency, and identify outlier configurations.
+
+Requires a Webex OAuth token via WEBEX_ACCESS_TOKEN.
+
+Usage:
+    export WEBEX_ACCESS_TOKEN="your_token_here"
+    python3 webex_pstn_auditor.py
+"""
+
 import requests
 import json
 import os
