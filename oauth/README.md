@@ -194,7 +194,7 @@ Every refresh event is auditable.
 - All example files are templates with **no sensitive data**.
 - The system provides natural versioning through timestamped outputs.
 
-This makes the tool safe for GitHub and professional environments.
+This design ensures credentials remain private while allowing the automation to operate reliably across many organizations.
 
 ---
 
