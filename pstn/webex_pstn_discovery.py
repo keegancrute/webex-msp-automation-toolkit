@@ -1,3 +1,26 @@
+#!/usr/bin/env python3
+
+"""
+Webex PSTN Discovery Tool
+
+This script discovers PSTN connection options across all customer organizations
+under a Webex Partner account. For each org, it:
+
+    1. Activates the organization (adds it to Managed Customers)
+    2. Retrieves all locations
+    3. Queries /telephony/config/connectionOptions for each location
+    4. Saves raw and provider-filtered PSTN option data to JSON files
+
+This tool is designed for MSPs and Cisco partners performing PSTN migrations,
+audits, or large-scale telephony evaluations.
+
+A Webex OAuth access token must be provided via WEBEX_ACCESS_TOKEN.
+
+Usage:
+    export WEBEX_ACCESS_TOKEN="your_token_here"
+    python3 webex_pstn_discovery.py
+"""
+
 import os
 import sys
 import json
