@@ -1,3 +1,35 @@
+#!/usr/bin/env python3
+
+"""
+Webex PSTN Provider Flipper
+
+This script updates PSTN assignments for all locations within selected Webex
+organizations. It is intended for controlled migrations between PSTN providers
+(e.g., from Local Gateway / CallTower → Veracity).
+
+For each org, the script:
+    1. Activates the org under Partner scope
+    2. Retrieves all locations
+    3. Fetches valid PSTN provider IDs for that org
+    4. Applies the desired PSTN provider to each location
+    5. Logs successes, failures, and skipped locations
+
+Outputs:
+    - pstn_flipper_results_<timestamp>.json
+    - pstn_flipper_failures_<timestamp>.json
+
+Provider selection may be:
+    - Hardcoded
+    - Keyword-based
+    - Loaded from dynamic discovery
+
+A Webex OAuth access token must be supplied via WEBEX_ACCESS_TOKEN.
+
+Usage:
+    export WEBEX_ACCESS_TOKEN="your_token_here"
+    python3 webex_pstn_flipper.py
+"""
+
 import os
 import sys
 import json
