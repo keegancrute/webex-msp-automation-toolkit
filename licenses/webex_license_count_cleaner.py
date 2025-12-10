@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 """
-Webex License CSV Cleaner
--------------------------
-- Reads a raw Webex license CSV file (exported from another script)
-- Produces a wide-format Excel file where:
-    * Each row = one organization (customer_name + org_id)
-    * Each license type = two columns (total, consumed)
+Webex License CSV Cleaner (Wide-Format Report Builder)
 
-This script performs no calculations—it preserves the original values exactly.
+This script takes the raw CSV output from webex_license_counter.py and transforms
+it into a human-readable, wide-format Excel file. Each org becomes a row, and
+each license type is expanded into two columns:
 
-Requirements:
-    pip install pandas openpyxl
+    <license_name> (total)
+    <license_name> (consumed)
+
+The result is a clean, presentation-ready Excel report for customer reviews or
+internal license audits.
+
+Usage:
+    python3 webex_license_count_cleaner.py
 """
+
 
 import os
 import pandas as pd
