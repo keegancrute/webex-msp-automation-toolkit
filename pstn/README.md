@@ -128,4 +128,4 @@ Tokens must include appropriate **Webex API** scopes.
 - All output folders are timestamped for traceability.  
 - Connection option IDs (`PSTN_OPTION_ID`, etc.) must be supplied by the user.  
 - The toolkit is provider-agnostic; any PSTN provider can be targeted.  
-- These scripts were developed and used in real MSP production environments supporting hundreds of organizations.
+- These scripts are designed for real MSP production environments supporting large customer fleets.
