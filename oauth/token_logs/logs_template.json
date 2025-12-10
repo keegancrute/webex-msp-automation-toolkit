@@ -1,0 +1,32 @@
+[
+  {
+    
+    "org": "example_org",
+    "timestamp": "2025-06-30T14:17:35.509688",
+    "status": "success",
+    "response": {
+      "access_token": "new_token_here",
+      "expires_in": 1209599,
+      "refresh_token": "new_refresh_token_here",
+      "refresh_token_expires_in": 7774733,
+      "token_type": "Bearer",
+      "scope": "relevant_scope_here"
+    }
+
+  },
+
+  {
+    "org": "example_org",
+    "timestamp": "2025-06-30T14:17:35.509688",
+    "status": "success",
+    "response": {
+      "access_token": "new_token_here",
+      "expires_in": 1209599,
+      "refresh_token": "new_refresh_token_here",
+      "refresh_token_expires_in": 7774733,
+      "token_type": "Bearer",
+      "scope": "relevant_scope_here"
+    }
+  }
+]
+                             
