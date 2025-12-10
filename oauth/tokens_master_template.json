@@ -1,0 +1,19 @@
+{
+  "Webex Integration 1": {
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "access_token": "initial_access_token_here",
+    "refresh_token": "initial_refresh_token_here",
+    "scopes": "your_oauth_scopes_url_string",
+    "date": "MM_DD_YY",
+  },
+
+  "Webex Integration 2": {
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "access_token": "initial_access_token_here",
+    "refresh_token": "initial_refresh_token_here",
+    "scopes": "your_oauth_scopes_url_string",
+    "date": "MM_DD_YY"
+  }
+}
