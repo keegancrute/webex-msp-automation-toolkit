@@ -1,83 +1,78 @@
 # Webex License Tools
 
-This folder contains two utilities for collecting and formatting Webex license data across multiple customer organizations. 
-They are designed for MSP, partner, and automation workflows where engineers frequently need:
+This folder contains utilities for retrieving, analyzing, and formatting Webex license data across many customer organizations. These tools support MSP and partner automation workflows where engineers frequently need:
 
 - A raw, programmatically retrieved snapshot of all licenses across orgs
-- A cleaned, human-readable Excel report suitable for delivery to customers or leadership
+- A structured, human-readable license report suitable for customers or leadership
+- A clean separation between **license retrieval** and **license formatting**
 
-Both scripts operate independently and can be run in sequence or used separately depending on your workflow.
+Each script operates independently and can be run alone or chained together depending on your workflow.
 
 ---
 
-## 1. `webex_license_counter.py` — License Retrieval & Reporting
+## 1. get_webex_licenses.py — Multi-Org License Retrieval
 
-Fetches all license data from Webex for the organizations you specify.
+Retrieves all license objects for each organization listed in the cleaned overages CSV (Customer Name + Org ID).
 
 ### What It Does
 - Activates each organization via `GET /v1/organizations/{orgId}`
 - Retrieves all license objects via `GET /v1/licenses`
-- Handles paging, rate limits, and API quirks
+- Handles retries, rate limits, and API quirks
 - Exports:
   - `successful_orgs_TIMESTAMP.json`
   - `failed_orgs_TIMESTAMP.json`
-  - `webex_licenses_TIMESTAMP.csv` (flat license table)
+  - `webex_org_details_TIMESTAMP.csv` (org-level license summary)
 
 ### How It Works
-The script pulls your Webex token from the environment:
+The script loads your Webex OAuth token from the environment:
 
     export WEBEX_ACCESS_TOKEN="your_token_here"
 
-Then you manually populate the `ORGS` list inside the script with organization IDs.
+You provide the cleaned CSV path when prompted at runtime.
 
 ### Run It
+    python3 get_webex_licenses.py
 
-    python3 webex_license_counter.py
-
-### Output Explained
-- Activation log — whether each org successfully activated
-- License records — every license object as returned by Webex
-- Flattened CSV — one row per license type, per org
+### Output Includes
+- Activation log (per org)
+- License objects (raw JSON)
+- Structured license summary CSV
 
 ---
 
-## 2. `webex_license_count_cleaner.py` — Wide-Format Excel Cleaner
+## 2. webex_license_count_cleaner.py — Wide-Format Excel License Report
 
-Takes the raw CSV produced by the license counter and transforms it into a wide Excel report where each org becomes a row and each license type gets two columns: `(total)` and `(consumed)`.
+Converts the raw, flat CSV of licenses into a wide Excel report where each org becomes one row and each license type is split into two columns: `(total)` and `(consumed)`.
 
 ### What It Does
-- Reads a flat CSV of licenses
-- Requires these columns:
+- Accepts a CSV containing:
 
       customer_name, org_id, license_name, total_units, consumed_units
 
-- Builds a wide pivot-style table, for example:
+- Builds a wide pivot-style table such as:
 
       | customer_name | org_id | Meetings (total) | Meetings (consumed) | Calling (total) | Calling (consumed) | ... |
 
 - Saves the output to an Excel `.xlsx` file
 
 ### Configure It
-Inside the script, set:
+Inside the script:
 
-      input_file = "INPUT_LICENSES.csv"
-      output_file = "LICENSE_REPORT.xlsx"
+    input_file = "INPUT_LICENSES.csv"
+    output_file = "LICENSE_REPORT.xlsx"
 
 ### Run It
+    python3 webex_license_count_cleaner.py
 
-      python3 webex_license_count_cleaner.py
+### Recommended Workflow
 
----
+1. Retrieve raw licenses:
 
-## Recommended Workflow
+       python3 get_webex_licenses.py
 
-1. Fetch raw license data:
+   Produces: `webex_org_details_YYYYMMDD_HHMMSS.csv`
 
-       python3 webex_license_counter.py
-
-   Produces: `webex_licenses_YYYYMMDD_HHMMSS.csv`
-
-2. Clean & widen the CSV:
+2. Clean & widen the license table:
 
        python3 webex_license_count_cleaner.py
 
@@ -87,11 +82,11 @@ Inside the script, set:
 
 ## Requirements
 
-      pip install pandas requests ratelimit
+    pip install pandas requests ratelimit openpyxl
 
 ---
 
 ## Security Notes
 - No secrets or tokens are stored in these scripts.
 - `WEBEX_ACCESS_TOKEN` must be exported as an environment variable.
-- Organization ID lists must be populated manually and should not be committed.
+- Organization ID lists, if used, should not be committed to version control.
