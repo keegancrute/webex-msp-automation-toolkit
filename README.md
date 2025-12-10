@@ -23,7 +23,7 @@ Each module is independent, script-friendly, and designed around real-world oper
 
 
 ## Repository Structure
-
+---
 webex-msp-automation-toolkit/
   licenses/           - License retrieval + wide-format reporting tools
   oauth/              - Multi-tenant OAuth token refresh automation
