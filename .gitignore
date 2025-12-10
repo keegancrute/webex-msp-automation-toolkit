@@ -1,0 +1,144 @@
+########################################
+# Global Python Ignore Rules
+########################################
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables
+.env
+*.env
+
+# Packaging / distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+
+########################################
+# OAuth Token Refresher (/oauth)
+########################################
+
+# The private master secrets file (never commit)
+oauth/tokens_master.json
+
+# Automatically generated token outputs & logs
+oauth/access_tokens/
+oauth/token_logs/
+
+# Any accidental token files
+oauth/*tokens*.json
+oauth/*log*.json
+
+
+########################################
+# PSTN Toolkit (/pstn)
+########################################
+
+# Generated JSON / CSV / XLSX outputs
+pstn/*.json
+pstn/*.csv
+pstn/*.xlsx
+
+# If PSTN exports to nested folders
+pstn/output/
+pstn/exports/
+
+
+########################################
+# License Tools (/licenses)
+########################################
+
+# Output / formatted reporting files
+licenses/*.csv
+licenses/*.xlsx
+licenses/output/
+licenses/reports/
+
+
+########################################
+# Overages Automation (/overages)
+########################################
+
+# Input/cleaned CSVs and generated Excel/JSON
+overages/*.csv
+overages/*.xlsx
+overages/*.json
+overages/output/
+overages/reports/
+
+
+########################################
+# Wholesale Billing (/wholesale_billing)
+########################################
+
+# Raw and transformed billing report files
+wholesale_billing/*.csv
+wholesale_billing/*.xlsx
+wholesale_billing/*.json
+wholesale_billing/output/
+
+
+########################################
+# Global Logs
+########################################
+
+logs/
+*.log
+
+
+########################################
+# OS / Editor / IDE-level ignores
+########################################
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+*.iml
+
+
+########################################
+# Node.js (optional future OAuth testing)
+########################################
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+########################################
+# Miscellaneous
+########################################
+
+# Temporary / backup files
+*.bak
+*.tmp
+*.swp
+*.swo
+*.temp
+
+# Cache folders
+.cache/
+__snapshot__/
