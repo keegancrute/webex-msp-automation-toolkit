@@ -2,7 +2,7 @@
 
 This folder contains automation utilities for cleaning Webex overage CSVs and generating full overage reports across multiple customer organizations. These tools support MSP and partner workflows where engineers must routinely:
 
-- Normalize and fix Webex overage CSV exports
+- Cleans and normalizes Webex overage CSV exports
 - Activate customer organizations programmatically
 - Retrieve license consumption data
 - Compute overages and utilization
@@ -17,7 +17,7 @@ Each script operates independently, and the pipeline script can run the entire w
 Prepares raw Webex overage CSV files for automation by fixing misaligned rows, normalizing customer names, and extracting `Customer Name` + `Org ID`.
 
 ### What It Does
-- Repairs customer names split across multiple columns
+- Corrects structural inconsistencies such as multi-column customer names
 - Ensures `Customer Name` and `Customer Org ID` are aligned
 - Produces a cleaned, timestamped CSV
 - Removes duplicates and preserves only the required two columns
@@ -33,7 +33,7 @@ The script outputs:
 
 ### Output Includes
 - Cleaned customer name + org ID pairs
-- First 5 rows previewed in the terminal
+- Provides a preview of processed records for validation
 
 ---
 
@@ -44,7 +44,7 @@ Runs the complete overages workflow:
 1. Cleans the raw CSV  
 2. Activates each organization via `/v1/organizations/{orgId}`  
 3. Retrieves all license objects via `/v1/licenses`  
-4. Computes license overuse and underutilization  
+4. Calculates license utilization metrics, including overage and underuse  
 5. Generates a color-coded Excel overage report
 
 ### What It Does
