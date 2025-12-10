@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Webex OAuth Token Refresher Script
 ----------------------------------
