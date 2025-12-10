@@ -23,7 +23,8 @@ Each module is independent, script-friendly, and designed around real-world oper
 
 
 ## Repository Structure
----
+
+~~~text
 webex-msp-automation-toolkit/
   licenses/           - License retrieval + wide-format reporting tools
   oauth/              - Multi-tenant OAuth token refresh automation
@@ -31,7 +32,8 @@ webex-msp-automation-toolkit/
   pstn/               - PSTN discovery, auditing, migration utilities
   wholesale_billing/  - Automated monthly billing report tooling
   README.md           - This file
----
+~~~
+
 
 Below is a quick summary of each module:
 
