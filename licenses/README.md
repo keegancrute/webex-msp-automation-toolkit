@@ -97,10 +97,3 @@ Inside the script, set:
 - Organization ID lists must be populated manually and should not be committed.
 
 ---
-
-If you'd like, I can also add:
-- CLI argument support (`--input`, `--output`, `--orgs`)
-- Example inputs/outputs
-- A Makefile to automate both steps
-- A combined workflow diagram
-
